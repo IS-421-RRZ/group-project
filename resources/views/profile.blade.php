@@ -6,6 +6,16 @@
         <div class="container-fluid">
             <div class="jumbotron">
                 <div class="row">
+                    @if (count($errors) > 0)
+                        <div class="alert alert-danger">
+                            <strong>Whoops!</strong> There were some problems with your input.<br><br>
+                            <ul>
+                                @foreach ($errors->all() as $error)
+                                    <li>{{ $error }}</li>
+                                @endforeach
+                            </ul>
+                        </div>
+                    @endif
                     <div class="col-md-6">
                         <div class="row">
                             <div class="col-md-6">
@@ -16,7 +26,7 @@
                                             @if( !isset($profile_picture))
                                                 <img class="img-responsive" src="/img/icon.png" alt="">
                                             @else
-                                                <img class="img-responsive" src="{{ $profile_picture }}" alt="">
+                                                <img class="img-responsive" src="/image" alt="/img/icon.png">
                                             @endif
                                         </a>
                                         <input id="imageprofile" name="image" type="file" accept="image/*" />
